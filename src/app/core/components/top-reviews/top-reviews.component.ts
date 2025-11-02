@@ -11,7 +11,8 @@ interface Review {
 }
 
 @Component({
-    selector: 'vsf-top-reviews',
+  standalone: false,
+  selector: 'vsf-top-reviews',
     templateUrl: './top-reviews.component.html',
     styleUrls: ['./top-reviews.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush

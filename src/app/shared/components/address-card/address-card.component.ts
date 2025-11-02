@@ -4,7 +4,8 @@ import { AddressFragment, OrderAddressFragment } from '../../../common/generated
 import { DataService } from '../../../core/providers/data/data.service';
 
 @Component({
-    selector: 'vsf-address-card',
+  standalone: false,
+  selector: 'vsf-address-card',
     templateUrl: './address-card.component.html',
     // styleUrls: ['./address-card.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,29 +1,22 @@
-import {
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    Component,
-    ContentChild,
-    Input,
-    OnDestroy,
-    OnInit,
-    TemplateRef,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, Input, OnDestroy, OnInit, TemplateRef, inject } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 
 import { RadioCardFieldsetComponent } from './radio-card-fieldset.component';
 
 @Component({
-    selector: 'vsf-radio-card',
+  standalone: false,
+  selector: 'vsf-radio-card',
     templateUrl: './radio-card.component.html',
     styleUrls: ['./radio-card.component.scss'],
     exportAs: 'KbRadioCard',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RadioCardComponent<T = any> implements OnInit, OnDestroy {
+    private fieldset = inject(RadioCardFieldsetComponent);
+    private changeDetector = inject(ChangeDetectorRef);
+
     @Input() item: T;
     @ContentChild(TemplateRef) itemTemplate: TemplateRef<T>;
-
-    constructor(private fieldset: RadioCardFieldsetComponent, private changeDetector: ChangeDetectorRef) {}
 
     private idChange$ = new Subject<T>();
     private subscription: Subscription;
